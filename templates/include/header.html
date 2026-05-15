@@ -1,0 +1,31 @@
+{% load static %}
+<header class="header">
+    
+    <!-- Mobile Header -->
+    <nav class="header-nav">
+        <div class="nav-menu-mobile-btn">
+            <span class="menu-btn__line"></span>
+        </div>
+        <a href="#" class="nav-logo">
+            <div class="nav-logo__wrapper">
+                <img src="" alt="site logo" class="nav-logo__img">
+            </div>
+            <span class="nav-logo__description">بلاگ</span>
+        </a>
+        <div class="div nav-search">
+            <img class="search__img" src="{% static 'icons/ui/search.svg' %}" alt="search">
+        </div>
+    </nav>
+    <!-- End Mobile Header -->
+    
+    <!-- Desktop Header -->
+    <div class="header-search">
+        <img class="search__img" src="{% static 'icons/ui/search.svg' %}" alt="search">
+        <!-- This line to place Django Form -->
+    </div>
+    <div class="div header-profile">
+        <img class="profile__img profile__img--desktop-header" src="" alt="">
+        <span class="profile__text"></span>
+    </div>
+</header>
+<!-- End Desktop Header -->

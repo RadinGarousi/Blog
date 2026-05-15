@@ -1,0 +1,62 @@
+{% load static %}
+<aside class="aside">
+    <div class="div aside-profile">
+        <img src="" alt="" class="div profile__img profile__img--desktop-side">
+        <div class="profile__specification">
+            <span class="profile__name"></span>
+            <span class="profile__id"></span>
+        </div>
+    </div>
+    <nav class="aside__nav">
+        <a href="#" class="nav-logo">
+            <div class="nav-logo__wrapper nav-logo__wrapper--desktop">
+                <img src="" alt="site logo" class="nav-logo__img nav-logo__img--desktop">
+            </div>
+            <span class="nav-logo__description nav-logo__description--desktop">بلاگ</span>
+        </a>
+        <ul class="aside-menu">
+            <li class="menu-item">
+                <a href="#" class="menu__link">
+                    <img src="{% static 'icons/ui/home.svg' %}" alt="home-icon" class="menu-item__img">
+                    <span class="menu-item__text">خانه</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu__link">
+                    <img src="{% static 'icons/ui/explore.svg' %}" alt="explore-icon" class="menu-item__img">
+                    <span class="menu-item__text">کاوش</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu__link">
+                    <img src="{% static 'icons/ui/create_blog.svg' %}" alt="create_blog-icon" class="menu-item__img">
+                    <span class="menu-item__text">نوشتن پست</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu__link">
+                    <img src="{% static 'icons/ui/saved.svg' %}" alt="saved-icon" class="menu-item__img">
+                    <span class="menu-item__text">ذخیره شده ها</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu__link">menu
+                    <img src="{% static 'icons/ui/profile.svg' %}" alt="profile-icon" class="menu-item__img">
+                    <span class="menu-item__text">پروفایل</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu__link">
+                    <img src="{% static 'icons/ui/setting.svg' %}" alt="setting-icon" class="menu-item__img">
+                    <span class="menu-item__text">تنظیمات</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#" class="menu__link">
+                    <img src="{% static 'icons/ui/exit.svg' %}" alt="exit-icon" class="menu-item__img">
+                    <span class="menu-item__text">خروج</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</aside>
