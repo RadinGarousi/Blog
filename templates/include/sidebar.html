@@ -1,12 +1,14 @@
 {% load static %}
 <aside class="aside">
-    <div class="div aside-profile">
-        <img src="" alt="" class="div profile__img profile__img--desktop-side">
-        <div class="profile__specification">
-            <span class="profile__name"></span>
-            <span class="profile__id"></span>
+    {% if user.is_authenticated %}
+        <div class="div aside-profile">
+            <img src="{{ user.get_avatar_url }}" alt="profile picture" class="div profile__img profile__img--desktop-side">
+            <div class="profile__specification">
+                <span class="profile__name">{{ user.first_name }} {{ user.last_name }}</span>
+                <span class="profile__id">@{{ user.username }}</span>
+            </div>
         </div>
-    </div>
+    {% endif %}
     <nav class="aside__nav">
         <a href="#" class="nav-logo">
             <img src="{% static 'icons/favicon/logo-32x32.png' %}" alt="site logo" class="nav-logo__img nav-logo__img--desktop">

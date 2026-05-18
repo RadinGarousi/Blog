@@ -1,6 +1,7 @@
 import uuid
 
 from django.contrib.auth.models import AbstractUser
+from django.templatetags.static import static
 from django.db import models
 
 from .validators import validate_avatar, validate_poster
@@ -44,7 +45,7 @@ class User(AbstractUser):
     # when the user has not uploaded an avatar or poster.
     # Default images are served from the static files directory.
     def get_avatar_url(self):
-        return self.avatar.url if self.avatar else "images/default/avatar.webp"
+        return self.avatar.url if self.avatar else static("images/default/avatar.webp")
 
     def get_poster_url(self):
-        return self.poster.url if self.poster else "images/default/poster.webp"
+        return self.poster.url if self.poster else static("images/default/poster.webp")

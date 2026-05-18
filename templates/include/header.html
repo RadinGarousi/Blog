@@ -21,9 +21,11 @@
         <img class="search__img" src="{% static 'icons/ui/search.svg' %}" alt="search">
         <!-- This line to place Django Form -->
     </div>
-    <div class="div header-profile">
-        <img class="profile__img profile__img--desktop-header" src="" alt="">
-        <span class="profile__text"></span>
-    </div>
+    {% if user.is_authenticated %}
+        <div class="div header-profile">
+            <img class="profile__img profile__img--desktop-header" src="{{ user.get_avatar_url }}" alt="profile picture">
+            <span class="profile__text">{{ user.first_name }} {{ user.last_name }}</span>
+        </div>
+    {% endif %}
 </header>
 <!-- End Desktop Header -->
