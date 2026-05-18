@@ -1,3 +1,2 @@
-asgire
 Django>5.2, <5.3
-sqlparse
+pillow
