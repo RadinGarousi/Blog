@@ -1,0 +1,60 @@
+/* 
+
+-- Left Auth --
+
+*/
+
+.left-auth {
+    display: flex;
+    justify-content: center;
+    padding: 24px 14px;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* Logo */
+
+.logo-wrapper--auth {
+    margin: 0 auto 88px;
+}
+
+.left-auth__logo {
+    width: 40px;
+    height: 40px;
+}
+
+.left-auth__text {
+    font-size: 20px;    
+}
+
+/* texes */
+
+.left-auth__title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 13px;
+}
+
+.left-auth__description {
+    font-size: 15px;
+    color: #6A6A8A;
+    margin-bottom: 32px;
+}
+
+/* Content */
+
+.left-auth-content {
+    padding: 24px;
+}
+
+/* Left auth btn */
+
+.left-auth__btn {
+    color: #5A5A7A;
+    margin: 0 auto;
+}
+
+.left-auth__link {
+    color: #C9A84C;
+    font-weight: 600;
+}

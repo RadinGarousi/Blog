@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "Vazirmatn";
+    src:
+        url("../../fonts/Vazirmatn-SemiBold.woff2") format("wooff2");
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+}

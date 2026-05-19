@@ -1,3 +1,10 @@
-.div {
-    
+/* Logo */
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px
+}
+
+.logo-wrapper__text {
+    font-weight: 700;
 }

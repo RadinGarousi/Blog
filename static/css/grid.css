@@ -28,3 +28,9 @@
         max-width: 1200px;
     }
 }
+
+@media (min-width: 1360px) {
+    .container {
+        max-width: 1340px;
+    }
+}
