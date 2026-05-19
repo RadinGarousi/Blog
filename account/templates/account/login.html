@@ -16,7 +16,12 @@
             </a>
             <h2 class="left-auth__title">خوش آمدید</h2>
             <p class="left-auth__description">برای ادامه وارد شوید</p>
-            <div class="left-auth-content"></div>
+            <div class="left-auth-content">
+                <form class="content-form" method="post">
+                    {% csrf_token %}
+                    {{ form.as_div }}
+                </form>
+            </div>
             <p class="left-auth__btn">
                 حساب کاربری ندارید؟
                 <a href="{% url "account:user_register" %}" class="left-auth__link">ثبت نام</a>
