@@ -1,6 +1,10 @@
-{% extends "base/base.html" %}
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+{% endblock %}
 
 {% block content %}
-    {% include "include/header.html" %}
-    {% include "include/sidebar.html" %}
+    {% include 'include/navbar.html' %}
 {% endblock %}

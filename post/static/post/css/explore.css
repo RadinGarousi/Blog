@@ -1,0 +1,61 @@
+header {
+    padding: 40px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+header h1 {
+    color: #d4af37;
+    font-size: 40px;
+}
+
+.explore-container {
+    padding: 30px 8% 80px;
+    display: grid;
+    grid-template-columns:
+    repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.post-link {
+    text-decoration: none;
+}
+
+.explore-card {
+    background: #151515;
+    border-radius: 18px;
+    overflow: hidden;
+    transition: 0.4s;
+    border: 1px solid transparent;
+}
+
+.explore-card:hover {
+    transform: translateY(-8px);
+    border-color: #d4af37;
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+}
+
+.explore-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.explore-content {
+    padding: 18px;
+}
+
+.explore-content h2 {
+    color: #d4af37;
+    margin-bottom: 12px;
+    font-size: 20px;
+}
+
+.explore-content p {
+    color: #bbb;
+    line-height: 1.8;
+    font-size: 14px;
+}

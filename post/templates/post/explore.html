@@ -1,0 +1,32 @@
+{% extends 'base/main_base.html' %}
+{% load static %}
+
+
+{% block title %}{{ block.super }}کاوش{% endblock %}
+
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'post/css/explore.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    {{ block.super }}
+
+    <header>
+        <h1>کاوش پست‌ها</h1>
+    </header>
+
+    <section id="exploreContainer" class="explore-container">
+        <div class="explore-card">
+            <a href="#" class="post-link"><img src="#" alt="post picture"></a>
+            <div class="explore-content">
+                <a href="#" class="post-link"><h2>Post title</h2></a>
+                <a href="#" class="post-link"><p>Post description</p></a>
+                <a href="#" class="post-link">Post author</a>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

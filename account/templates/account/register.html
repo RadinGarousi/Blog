@@ -1,26 +1,47 @@
 {% extends "base/base.html" %}
 {% load static %}
 
+{% block title %}{{ block.super }}ثبت ن{% endblock %}
+
+
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'account/css/auth/auth_base.css' %}">
-    <link rel="stylesheet" href="{% static 'account/css/auth/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'account/css/auth_base.css' %}">
+    <link rel="stylesheet" href="{% static 'account/css/register.css' %}">
 {% endblock %}
 
+
 {% block content %}
-    <div class="wrapper">
-        <section class="right-auth"></section>
-        <section class="left-auth">
-            <a href="{% url 'post:home' %}" class="logo-wrapper logo-wrapper--auth">
-                <img src="{% static 'icons/favicon/logo-48x48.png' %}" alt="site logo" class="left-auth__logo">
-                <span class="logo-wrapper__text left-auth__text">بلاگیفای</span>
-            </a>
-            <h2 class="left-auth__title">به بلگیفایل بپیوندید</h2>
-            <p class="left-auth__description">ایده هایتان را با دنیا به اشتراک بگذارید</p>
-            <div class="left-auth-content"></div>
-            <p class="left-auth__btn">
-                قبلا ثبت نام کرده اید؟
-                <a href="{% url "account:user_login" %}" class="left-auth__link">ورود</a>
-            </p>
-        </section>
+
+    <div class="container">
+        <div class="auth-box">
+            <h1>ایجاد حساب</h1>
+            <p>به دنیای GoldBlog خوش آمدید</p>
+
+            <form>
+                <div class="input-group">
+                    <label>نام کاربری</label>
+                    <input id="username" type="text" placeholder="نام کاربری">
+                </div>
+                <div class="input-group">
+                    <label>ایمیل</label>
+                    <input id="email" type="email" placeholder="ایمیل">
+                </div>
+                <div class="input-group">
+                    <label>رمز عبور</label>
+                    <input id="password" type="password" placeholder="رمز عبور">
+                </div>
+
+                <button type="submit">ثبت نام</button>
+
+            </form>
+
+            <div class="bottom-text">
+                حساب دارید؟
+                <a href="{% url 'account:user_login' %}">ورود</a>
+            </div>
+
+        </div>
     </div>
+
+
 {% endblock %}

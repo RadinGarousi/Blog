@@ -1,0 +1,16 @@
+.hero button {
+    padding: 15px 40px;
+    border: none;
+    border-radius: 10px;
+    background: #d4af37;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.hero button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #d4af37;
+}

@@ -1,0 +1,104 @@
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+}
+
+.auth-box {
+    width: 100%;
+    background: rgba(20, 20, 20, 0.75);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    backdrop-filter: blur(15px);
+    padding: 50px 40px;
+    border-radius: 25px;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+}
+
+.auth-box h1 {
+    color: #d4af37;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.auth-box p {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #aaa;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    margin-bottom: 10px;
+    color: #d4af37;
+}
+
+.input-group input {
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #333;
+    background: #111;
+    color: white;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #d4af37;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: #d4af37;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.7);
+}
+
+
+.bottom-text {
+    margin-top: 25px;
+    text-align: center;
+    color: #aaa;
+}
+
+.bottom-text a {
+    color: #d4af37;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+@media (max-width: 500px) {
+    .auth-box {
+        padding: 40px 25px;
+    }
+
+    .auth-box h1 {
+        font-size: 32px;
+    }
+
+}

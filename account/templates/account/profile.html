@@ -1,6 +1,16 @@
-{% extends "main_base.html" %}
+{% extends "base/main_base.html" %}
+{% load static %}
+
+
+{% block title %}{{ block.super }}پروفایل{% endblock %}
+
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'account/css/profile.css' %}">
+{% endblock %}
+
 
 {% block content %}
-    {{ block.super }}
-    
+	{{ block.super }}
 {% endblock %}

@@ -1,33 +1,11 @@
-:root {
-    --white: #f0fde6
-}
-
-/* 
-
--- Reset Style--
-
-*/
-
-a {
-    color: var(--white);
-    text-decoration: none;
-}
-
-/* 
-
--- App Style
-
-*/
-
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: "Vazirmatn", sans-serif;
-    font-weight: 400;
-    background-color: #09090F;
-    color: var(--white);
+    font-family: 'Vazirmatn', 'sans-serif';
+    background: #0f0f0f;
+    color: white;
 }

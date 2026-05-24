@@ -1,1 +1,29 @@
 {% extends "base/main_base.html" %}
+{% load static %}
+
+
+{% block title %}{{ block.super }}خانه{% endblock %}
+
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'post/css/components.css' %}">
+    <link rel="stylesheet" href="{% static 'post/css/home.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    {{ block.super }}
+
+    <section class="hero">
+        <h1>GoldBlog</h1>
+        <p> GoldBlog شبکه اجتماعی</p>
+    </section>
+
+    <section class="posts">
+        <div id="postsContainer">
+            <!-- For use 'for' loop to place server data -->
+        </div>
+    </section>
+
+{% endblock %}

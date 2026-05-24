@@ -1,0 +1,28 @@
+{% extends 'base/main_base.html' %}
+{% load static %}
+
+
+{% block title %}{{ block.super }}ساخت پست{% endblock %}
+
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'post/css/components.css' %}">
+    <link rel="stylesheet" href="{% static 'post/css/create.css' %}">
+{% endblock %}
+
+
+{% block content %}
+	{{ block.super }}
+
+    <section class="hero">
+        <h1>پست جدید</h1>
+        <form action="">
+            <input type="text" placeholder="عنوان">
+            <textarea placeholder="متن" cols="30" rows="10"></textarea>
+            <input type="file" accept="image/*">
+            <button type="submit">انتشار</button>
+        </form>
+    </section>
+
+{% endblock %}
