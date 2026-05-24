@@ -18,17 +18,7 @@
             <h1>خوش برگشتی</h1>
             <p>وارد حساب کاربری خود شوید</p>
 
-            <form>
-                <div class="input-group">
-                    <label>ایمیل</label>
-                    <input id="loginEmail" type="email" placeholder="ایمیل خود را وارد کنید">
-                </div>
-                <div class="input-group">
-                    <label>رمز عبور</label>
-                    <input id="loginPassword" type="password" placeholder="رمز عبور">
-                </div>
-                <button type="submit">ورود</button>
-            </form>
+            {% include 'account/forms.html' %}
 
             <div class="bottom-text">
                 حساب ندارید؟

@@ -45,6 +45,22 @@ body {
     color: #d4af37;
 }
 
+details {
+    color: #fa4343;
+}
+
+summary {
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
 .input-group input {
     padding: 15px;
     border-radius: 12px;

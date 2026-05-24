@@ -12,8 +12,17 @@ class UserRegisterView(View):
 
 
 class UserLoginView(View):
+    template_name = "account/login.html"
+    form_class = UserLoginForm
+
     def get(self, request):
-        return render(request, "account/login.html", {"form": UserLoginForm})
+        return render(request, self.template_name, {"form": self.form_class()})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            pass
+        return render(request, self.template_name, {"form": form})
 
 
 class UserProfileView(View):

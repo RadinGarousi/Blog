@@ -1,0 +1,16 @@
+<form method="post" novalidate>  <!--TODO-->
+    {% csrf_token %}
+    {% for item in form %}
+        <div class="input-group">
+            {{ item.label_tag }}
+            {% if item.errors %}
+                <details>
+                    <summary>ایراد ها:</summary>
+                    {{ item.errors }}
+                </details>
+            {% endif %}
+            {{ item }}
+        </div>
+    {% endfor %}
+    <button type="submit">ادامه</button>
+</form>
