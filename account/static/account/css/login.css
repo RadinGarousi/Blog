@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../images/login_background.jpeg');
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../images/login_background.webp');
     background-size: cover;
     background-position: center;
 }
