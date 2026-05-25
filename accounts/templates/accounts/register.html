@@ -5,8 +5,8 @@
 
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'account/css/auth_base.css' %}">
-    <link rel="stylesheet" href="{% static 'account/css/register.css' %}">
+    <link rel="stylesheet" href="{% static 'accounts/css/auth_base.css' %}">
+    <link rel="stylesheet" href="{% static 'accounts/css/register.css' %}">
 {% endblock %}
 
 
@@ -37,7 +37,7 @@
 
             <div class="bottom-text">
                 حساب دارید؟
-                <a href="{% url 'account:user_login' %}">ورود</a>
+                <a href="{% url 'accounts:user_login' %}">ورود</a>
             </div>
 
         </div>

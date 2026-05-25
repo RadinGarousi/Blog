@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'post.apps.PostConfig',
-    'account.apps.AccountConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -129,4 +129,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 MEDIA_URL = 'media/'
 
-AUTH_USER_MODEL = 'account.User'
+AUTH_USER_MODEL = 'accounts.User'

@@ -2,17 +2,17 @@ from django.shortcuts import render, get_object_or_404
 from django.template.context_processors import request
 from django.views import View
 
-from account.forms import UserLoginForm
-from account.models import User
+from accounts.forms import UserLoginForm
+from accounts.models import User
 
 
 class UserRegisterView(View):
     def get(self, request):
-        return render(request, "account/register.html")
+        return render(request, "accounts/register.html")
 
 
 class UserLoginView(View):
-    template_name = "account/login.html"
+    template_name = "accounts/login.html"
     form_class = UserLoginForm
 
     def get(self, request):
@@ -28,4 +28,4 @@ class UserLoginView(View):
 class UserProfileView(View):
     def get(self, request, **kwargs):
         profile_user = request.user if request.user.pk == kwargs['user_id'] else  get_object_or_404(User, pk=kwargs['user_id'])
-        return render(request, "account/profile.html", {'user': profile_user})
+        return render(request, "accounts/profile.html", {'user': profile_user})

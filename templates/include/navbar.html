@@ -5,11 +5,11 @@
         <li><a class="nav-links__item" href="{% url 'post:explore' %}">کاوش</a></li>
         {% if request.user.is_authenticated %}
             <li><a class="nav-links__item" href="{% url 'post:post_create' %}">پست جدید</a></li>
-            <li><a class="nav-links__item" href="{% url 'account:user_profile' request.user.pk %}">پروفایل</a></li>
+            <li><a class="nav-links__item" href="{% url 'accounts:user_profile' request.user.pk %}">پروفایل</a></li>
             <li><a href="#" class="logout-btn">خروج</a></li>
         {% else %}
-            <li><a class="nav-links__item" href="{% url 'account:user_login' %}">ورود</a></li>
-            <li><a class="nav-links__item" href="{% url 'account:user_register' %}">ثبت نام</a></li>
+            <li><a class="nav-links__item" href="{% url 'accounts:user_login' %}">ورود</a></li>
+            <li><a class="nav-links__item" href="{% url 'accounts:user_register' %}">ثبت نام</a></li>
         {% endif %}
     </ul>
 </nav>

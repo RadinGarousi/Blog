@@ -6,8 +6,8 @@
 
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'account/css/auth_base.css' %}">
-    <link rel="stylesheet" href="{% static 'account/css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'accounts/css/auth_base.css' %}">
+    <link rel="stylesheet" href="{% static 'accounts/css/login.css' %}">
 {% endblock %}
 
 
@@ -18,11 +18,11 @@
             <h1>خوش برگشتی</h1>
             <p>وارد حساب کاربری خود شوید</p>
 
-            {% include 'account/forms.html' %}
+            {% include 'accounts/forms.html' %}
 
             <div class="bottom-text">
                 حساب ندارید؟
-                <a href="{% url 'account:user_register' %}">ثبت نام</a>
+                <a href="{% url 'accounts:user_register' %}">ثبت نام</a>
             </div>
 
         </div>
