@@ -53,6 +53,6 @@ class User(AbstractUser):
 
         if self.account_status == self.AccountStatus.VERIFIED and self.is_active == False:
             self.is_active = True
-        elif self.account_status == self.AccountStatus.REJECTED and self.is_active == True:
+        elif self.account_status in [self.AccountStatus.REJECTED, self.AccountStatus.PENDING] and self.is_active == True:
             self.is_active = False
         return super().save(*args, **kwargs)
