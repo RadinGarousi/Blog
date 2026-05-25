@@ -3,6 +3,7 @@ import uuid
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.templatetags.static import static
+from django.urls import reverse
 
 from .validators import validate_avatar, validate_poster
 
@@ -44,6 +45,9 @@ class User(AbstractUser):
 
     def get_poster_url(self):
         return self.poster.url if self.poster else static("images/default/poster.webp")
+
+    def get_absolute_url(self):
+        return reverse("accounts:user_profile", kwargs={"user_id": self.pk})
 
     def save(self, *args, **kwargs):
 
