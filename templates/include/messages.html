@@ -1,0 +1,15 @@
+{% load static %}
+{% if messages %}
+	{% for msg in messages %}
+        <div class="msg-wrapper">
+            {% if msg.tags == 'success' %}
+		        <p class="msg msg--{{ msg.tags }}">
+                    <img src="{% static 'icons/successs.svg' %}" alt="success icon">
+                    <span>{{ msg }}</span>
+                    <span class="msg__progress"></span>
+                </p>
+            {% endif %}
+        </div>
+	{% endfor %}
+    <script src="{% static 'js/messages.js' %}"></script>
+{% endif %} 

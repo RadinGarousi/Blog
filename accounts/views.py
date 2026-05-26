@@ -33,7 +33,7 @@ class UserLoginView(View):
             user = authenticate(request, username=cd['login'], password=cd['password'])
             if user:
                 login(request, user)
-                messages.success(request, "خوش آمدید...")
+                messages.success(request, "شما با موفقیت وارد شدید")
                 next_url = request.GET.get("next", None)
                 if next_url:
                     return redirect(next_url)

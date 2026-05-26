@@ -45,7 +45,8 @@ body {
     color: #d4af37;
 }
 
-details {
+details,
+.nonfield{
     color: #fa4343;
 }
 
