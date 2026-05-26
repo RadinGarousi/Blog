@@ -2,11 +2,17 @@
 {% if messages %}
 	{% for msg in messages %}
         <div class="msg-wrapper">
-            {% if msg.tags == 'success' %}
+            {% if msg.tags == "success" %}
 		        <p class="msg msg--{{ msg.tags }}">
-                    <img src="{% static 'icons/successs.svg' %}" alt="success icon">
+                    <img src="{% static 'icons/success.svg' %}" alt="success icon">
                     <span>{{ msg }}</span>
-                    <span class="msg__progress"></span>
+                    <span class="msg__progress msg__progress--{{ msg.tags }}"></span>
+                </p>
+            {% elif msg.tags == "warning" %}
+                <p class="msg msg--{{ msg.tags }}">
+                    <img src="{% static 'icons/warning.svg' %}" alt="success icon">
+                    <span>{{ msg }}</span>
+                    <span class="msg__progress msg__progress--{{ msg.tags }}"></span>
                 </p>
             {% endif %}
         </div>

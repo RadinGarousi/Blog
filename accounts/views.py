@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth import get_user_model
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
@@ -41,6 +41,19 @@ class UserLoginView(View):
                     return redirect(user)
         form.add_error(None, "اطلاعات وارد شده نادرست است.")
         return render(request, self.template_name, {"form": form})
+
+
+class UserLogoutView(View):
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            messages.warning(request, "شما وارد نشده اید که خارج شوید")
+            return redirect("post:home")
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request):
+        logout(request)
+        messages.success(request, "شما با موفقیت خارج شدید.")
+        return redirect("post:home")
 
 
 class UserProfileView(View):

@@ -13,7 +13,8 @@
     width: 100%;
     border: 2px solid;
     transition: transform 0.5s ease, opacity 0.5s ease;
-    gap: 5px
+    gap: 5px;
+    margin-bottom: 10px;
 }
 
 .msg--success {
@@ -22,15 +23,28 @@
     border-color: #0f5132;
 }
 
+.msg--warning {
+    background-color: #332701;
+    color: #ffda6a;
+    border-color: #997404;
+}
+
 .msg__progress {
     position: absolute;
     right: 0;
     bottom: 0;
     width: 100%;
-    height: 4px;
-    background-color: #198754;
+    height: 3px;
     animation: progress 5s linear forwards;
     border-radius: 0 0 3px 3px;
+}
+
+.msg__progress--success {
+    background-color: #198754;
+}
+
+.msg__progress--warning {
+    background-color: #997404;
 }
 
 .msg--hide {
