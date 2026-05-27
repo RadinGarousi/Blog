@@ -4,14 +4,26 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 
-from accounts.forms import UserLoginForm
+from accounts.forms import UserLoginForm, UserRegisterForm
 
 User = get_user_model()
 
 
 class UserRegisterView(View):
+    template_name = "accounts/register.html"
+    form_class = UserRegisterForm
+
     def get(self, request):
-        return render(request, "accounts/register.html")
+        form = self.form_class()
+        print(form)
+        return render(request, self.template_name, {"form": form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            pass
+        # print(form.password1.help_text)
+        return render(request, self.template_name, {"form": form})
 
 
 class UserLoginView(View):
@@ -58,6 +70,8 @@ class UserLogoutView(View):
 
 class UserProfileView(View):
     def get(self, request, **kwargs):
-        profile_user = request.user if request.user.pk == kwargs['user_id'] else get_object_or_404(User,
-                                                                                                   pk=kwargs['user_id'])
+        if request.user.pk == kwargs['user_id']:
+            profile_user = request.user
+        else:
+            profile_user = get_object_or_404(User, pk=kwargs['user_id'])
         return render(request, "accounts/profile.html", {'user': profile_user})

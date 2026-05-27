@@ -5,12 +5,26 @@
         <div class="input-group">
             {{ item.label_tag }}
             {% if item.errors %}
-                <details>
+                <details class="error-wrapper">
                     <summary>ایراد ها:</summary>
                     {{ item.errors }}
                 </details>
             {% endif %}
             {{ item }}
+            {% if item.help_text %}
+                <details class="help-text__parent">
+                    <summary>راهنمایی :</summary>
+                    <ul class="help-text__warpper">
+                        {% if item.html_name == "password1" %}
+                            {% for help_text in item.help_text %}
+                                <li class="help-text__item">{{ help_text }}</li>
+                            {% endfor %}
+                        {% else %}
+                            <li class="help-text__item">{{ item.help_text }}</li>
+                        {% endif %}
+                    </ul>
+                </details>
+            {% endif %}
         </div>
     {% endfor %}
     <button type="submit">ادامه</button>

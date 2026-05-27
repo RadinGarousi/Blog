@@ -45,7 +45,7 @@ body {
     color: #d4af37;
 }
 
-details,
+.error-wrapper,
 .nonfield{
     color: #fa4343;
 }
@@ -60,6 +60,10 @@ ul {
 
 li {
     margin-bottom: 10px;
+}
+
+.help-text__parent {
+    color: #A3B087;
 }
 
 .input-group input {

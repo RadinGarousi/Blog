@@ -17,23 +17,7 @@
             <h1>ایجاد حساب</h1>
             <p>به دنیای GoldBlog خوش آمدید</p>
 
-            <form>
-                <div class="input-group">
-                    <label>نام کاربری</label>
-                    <input id="username" type="text" placeholder="نام کاربری">
-                </div>
-                <div class="input-group">
-                    <label>ایمیل</label>
-                    <input id="email" type="email" placeholder="ایمیل">
-                </div>
-                <div class="input-group">
-                    <label>رمز عبور</label>
-                    <input id="password" type="password" placeholder="رمز عبور">
-                </div>
-
-                <button type="submit">ثبت نام</button>
-
-            </form>
+            {% include 'accounts/forms.html' %}
 
             <div class="bottom-text">
                 حساب دارید؟
