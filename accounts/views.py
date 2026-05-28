@@ -16,7 +16,7 @@ class UserRegisterView(View):
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             messages.warning(request, "شما قبلا وارد شده اید")
-            return redirect("post:home")
+            return redirect("blog:home")
         return super().dispatch(request, *args, **kwargs)
 
     def get(self, request):
@@ -39,7 +39,7 @@ class UserLoginView(View):
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             messages.warning(request, "شما قبلا وارد شده اید.")
-            return redirect("post:home")
+            return redirect("blog:home")
         return super().dispatch(request, *args, **kwargs)
 
     def get(self, request):
@@ -66,13 +66,13 @@ class UserLogoutView(View):
     def dispatch(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
             messages.warning(request, "شما وارد نشده اید که خارج شوید")
-            return redirect("post:home")
+            return redirect("blog:home")
         return super().dispatch(request, *args, **kwargs)
 
     def get(self, request):
         logout(request)
         messages.success(request, "شما با موفقیت خارج شدید.")
-        return redirect("post:home")
+        return redirect("blog:home")
 
 
 class UserProfileView(View):

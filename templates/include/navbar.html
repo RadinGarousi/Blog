@@ -1,10 +1,10 @@
 <nav class="navbar">
     <div class="logo">GoldBlog</div>
     <ul class="nav-links">
-        <li><a class="nav-links__item" href="{% url 'post:home' %}">خانه</a></li>
-        <li><a class="nav-links__item" href="{% url 'post:explore' %}">کاوش</a></li>
+        <li><a class="nav-links__item" href="{% url 'blog:home' %}">خانه</a></li>
+        <li><a class="nav-links__item" href="{% url 'blog:explore' %}">کاوش</a></li>
         {% if request.user.is_authenticated %}
-            <li><a class="nav-links__item" href="{% url 'post:post_create' %}">پست جدید</a></li>
+            <li><a class="nav-links__item" href="{% url 'blog:post_create' %}">پست جدید</a></li>
             <li><a class="nav-links__item" href="{% url 'accounts:user_profile' request.user.pk %}">پروفایل</a></li>
             <li><a href="{% url 'accounts:user_logout' %}" class="logout-btn">خروج</a></li>
         {% else %}
