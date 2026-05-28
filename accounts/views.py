@@ -38,6 +38,7 @@ class UserLoginView(View):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
+            messages.warning(request, "شما قبلا وارد شده اید.")
             return redirect("post:home")
         return super().dispatch(request, *args, **kwargs)
 
@@ -56,7 +57,7 @@ class UserLoginView(View):
                 if next_url:
                     return redirect(next_url)
                 else:
-                    return redirect(user)
+                    return redirect(user.get_absolute_url())
         form.add_error(None, "اطلاعات وارد شده نادرست است.")
         return render(request, self.template_name, {"form": form})
 

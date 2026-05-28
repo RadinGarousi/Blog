@@ -2,7 +2,6 @@ import uuid
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.template.defaultfilters import lower
 from django.templatetags.static import static
 from django.urls import reverse
 
@@ -56,5 +55,5 @@ class User(AbstractUser):
             self.is_active = True
         elif self.account_status in [self.AccountStatus.REJECTED, self.AccountStatus.PENDING] and self.is_active == True:
             self.is_active = False
-        self.email = lower(self.email).strip()
+        self.email = self.email.lower().strip()
         return super().save(*args, **kwargs)
