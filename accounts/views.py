@@ -13,16 +13,22 @@ class UserRegisterView(View):
     template_name = "accounts/register.html"
     form_class = UserRegisterForm
 
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            messages.warning(request, "شما قبلا وارد شده اید")
+            return redirect("post:home")
+        return super().dispatch(request, *args, **kwargs)
+
     def get(self, request):
-        form = self.form_class()
-        print(form)
-        return render(request, self.template_name, {"form": form})
+        return render(request, self.template_name, {"form": self.form_class()})
 
     def post(self, request):
         form = self.form_class(request.POST)
         if form.is_valid():
-            pass
-        # print(form.password1.help_text)
+            user = form.save()
+            login(request, user, backend="django.contrib.auth.backends.ModelBackend")
+            messages.success(request, "حساب شما با موفقیت ساخته شد و وارد شدید")
+            return redirect(user.get_absolute_url())
         return render(request, self.template_name, {"form": form})
 
 
