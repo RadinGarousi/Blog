@@ -56,4 +56,4 @@ class User(AbstractUser):
         elif self.account_status in [self.AccountStatus.REJECTED, self.AccountStatus.PENDING] and self.is_active == True:
             self.is_active = False
         self.email = self.email.lower().strip()
-        return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
