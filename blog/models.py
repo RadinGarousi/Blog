@@ -1,4 +1,5 @@
 import uuid
+from pathlib import Path
 
 from django.db import models
 from django.contrib.auth import get_user_model
@@ -8,7 +9,7 @@ User = get_user_model()
 
 
 def blog_cover_path(instance, filename):
-    return f"user_{instance.author_id}/blogs/blog_{instance.blog_uuid}/cover_{uuid.uuid4()}.{filename.split('.')[-1]}"
+    return f"user_{instance.author_id}/blogs/blog_{instance.blog_uuid}/cover_{uuid.uuid4()}{Path(filename).suffix}"
 
 class Blog(models.Model):
     class BlogStatus(models.TextChoices):
@@ -16,10 +17,10 @@ class Blog(models.Model):
         PENDING = "P", "Pending"
         REJECTED = "R", "Rejected"
 
-    blog_uuid = models.UUIDField(max_length=128, unique=True, default=uuid.uuid4, editable=False)
+    blog_uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=90)
     body = models.TextField()
-    slug = models.SlugField(blank=True)
+    slug = models.SlugField()
     cover = models.ImageField(unique=True, upload_to=blog_cover_path, verbose_name="Blog Image")
     preview_body = models.CharField(max_length=400, editable=False)
     status = models.CharField(max_length=1, choices=BlogStatus, default=BlogStatus.PENDING)
@@ -35,7 +36,7 @@ class Blog(models.Model):
 
     def save(self,*args, **kwargs):
         self.preview_body = self.body[:400]
-        if self.pk is None and self.slug == "":
+        if self.pk is None and not self.slug:
             self.slug = slugify(self.title, allow_unicode=True)
         super().save(*args, **kwargs)
 
