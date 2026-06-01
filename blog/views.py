@@ -7,7 +7,11 @@ from blog.models import Blog
 
 class HomeView(View):
     def get(self, request):
-        blogs = Blog.objects.filter(status=Blog.BlogStatus.VERIFIED).only("title", "preview_body", "author__username").select_related("author")
+        blogs = (
+            Blog.objects.filter(status=Blog.BlogStatus.VERIFIED)
+            .select_related("author")
+            .only("title", "preview_body", "slug", "author__username")
+            )
         paginator = Paginator(blogs, 10)
         page_obj = paginator.get_page(request.GET.get("page"))
         return render(request, "blog/home.html", {"blogs": page_obj})

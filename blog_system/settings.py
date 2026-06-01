@@ -138,5 +138,3 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'accounts.authenticate.EmailBackend'
 ]
-
-MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
