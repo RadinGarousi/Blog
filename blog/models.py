@@ -24,7 +24,7 @@ class Blog(models.Model):
     cover = models.ImageField(unique=True, upload_to=blog_cover_path, verbose_name="Blog Image")
     preview_body = models.CharField(max_length=400, editable=False)
     status = models.CharField(max_length=1, choices=BlogStatus, default=BlogStatus.PENDING)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
