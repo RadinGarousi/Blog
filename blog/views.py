@@ -10,7 +10,7 @@ class HomeView(View):
         blogs = (
             Blog.objects.filter(status=Blog.BlogStatus.VERIFIED)
             .select_related("author")
-            .only("title", "preview_body", "slug", "author__username")
+            .only("cover", "title", "preview_body", "slug", "author__username")
             )
         paginator = Paginator(blogs, 10)
         page_obj = paginator.get_page(request.GET.get("page"))

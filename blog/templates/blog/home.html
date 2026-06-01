@@ -21,9 +21,21 @@
     </section>
 
     <section class="posts">
-        <div id="postsContainer">
-            <!-- For use 'for' loop to place server data -->
-        </div>
+        {% if blogs %}
+            <div id="postsContainer">
+                {% for blog in blogs %}
+                    <div class="post-card">
+                        <img src="media/{{ blog.cover }}" alt="blog picture">
+                        <div class="post-content">
+                            <h2>{{ blog.title }}</h2>
+                            <p class="preview-text">{{ blog.preview_body }}</p>
+                            <span>نویسنده : <a href="{{ blog.author.get_absolute_url }}">{{ blog.author.username }}</a></span>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        <script src="{% static 'blog/js/home.js' %}"></script>
+        {% endif %}
     </section>
 
 {% endblock %}

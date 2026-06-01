@@ -18,11 +18,11 @@ class Blog(models.Model):
         REJECTED = "R", "Rejected"
 
     blog_uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
-    title = models.CharField(max_length=90)
+    title = models.CharField(max_length=70)
     body = models.TextField()
     slug = models.SlugField()
     cover = models.ImageField(unique=True, upload_to=blog_cover_path, verbose_name="Blog Image")
-    preview_body = models.CharField(max_length=400, editable=False)
+    preview_body = models.CharField(max_length=403, editable=False)
     status = models.CharField(max_length=1, choices=BlogStatus, default=BlogStatus.PENDING)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
     created_at = models.DateTimeField(auto_now_add=True)
@@ -35,7 +35,8 @@ class Blog(models.Model):
         return self.title
 
     def save(self,*args, **kwargs):
-        self.preview_body = self.body[:400]
+        body_sliced = " . ".join(item for item in self.body[:300].splitlines() if item)
+        self.preview_body = body_sliced + "..." if len(self.body) > 300 else body_sliced
         if self.pk is None and not self.slug:
             self.slug = slugify(self.title, allow_unicode=True)
         super().save(*args, **kwargs)
