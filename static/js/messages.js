@@ -6,7 +6,7 @@ messages.forEach((message) => {
         message.classList.add("msg--hide");
 
         message.addEventListener("transitionend", () => {
-            // message.parentElement.remove();
+            message.parentElement.remove();
         });
 
     }, 5000);

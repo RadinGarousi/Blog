@@ -2,13 +2,15 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 
+from blog_system.error_messages import GLOBAL_ERROR_MESSAGES
 
-LOGIN_ERROR_MESSAGES = {
-    "max_length": "تعداد کاراکتر وارد شده از حد مجاز بیشتر است.",
-    "required": "این فیلد الزامی میباشد"
+
+USER_DATA_ERROR_MESSAGES = {
+    **GLOBAL_ERROR_MESSAGES,
+    "unique": "این %(field_label)s در سایت ذخیره شده است",
+    "max_length": "تعداد کاراکتر وارد شده از حد مجاز بیشتر است."
 }
-USER_DATA_ERROR_MESSAGES = {**LOGIN_ERROR_MESSAGES, "unique": "این %(field_label)s در سایت ذخیره شده است"}
-PASSWORD_ERROR_MESSAGES = {"required": LOGIN_ERROR_MESSAGES['required']}
+PASSWORD_ERROR_MESSAGES = {"required": GLOBAL_ERROR_MESSAGES['required']}
 
 class UserLoginForm(forms.Form):
 
@@ -16,13 +18,13 @@ class UserLoginForm(forms.Form):
         max_length=254,
         widget=forms.TextInput(attrs={"placeholder": "ایمیل یا یوزرنیم خود را وارد کنید", "autocomplete": "username"}),
         label="ایمیل یا یزورنیم",
-        error_messages=LOGIN_ERROR_MESSAGES
+        error_messages=GLOBAL_ERROR_MESSAGES
     )
 
     password = forms.CharField(
         widget=forms.PasswordInput(attrs={"placeholder": "رمز عبور", "autocomplete": "current-password"}),
         label="رمز عبور",
-        error_messages=LOGIN_ERROR_MESSAGES
+        error_messages=GLOBAL_ERROR_MESSAGES
     )
 
 

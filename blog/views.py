@@ -2,6 +2,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.views import View
 
+from blog.forms import BlogCreateForm
 from blog.models import Blog
 
 
@@ -22,6 +23,9 @@ class ExploreView(View):
         return render(request, "blog/explore.html")
 
 
-class PostCreateView(View):
+class BlogCreateView(View):
+    form_class = BlogCreateForm
+    template_name = "blog/create.html"
+
     def get(self, request):
-        return render(request, "blog/create.html")
+        return render(request, self.template_name, {"form": self.form_class()})
