@@ -14,3 +14,20 @@
     transform: scale(1.05);
     box-shadow: 0 0 20px #d4af37;
 }
+
+div {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style: none;
+    color: #fa4343;
+}
+
+input,
+textarea {
+    width: 100%;
+}

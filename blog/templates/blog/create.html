@@ -17,8 +17,14 @@
 
     <section class="hero">
         <h1>پست جدید</h1>
-        <form action="" method="post" enctype="multipart/form-data">
-            {{form.as_div}}
+        <form action="" method="post" enctype="multipart/form-data" novalidate> <!-- TODO -->
+            {% csrf_token %}
+            {% for item in form %}
+            <div>
+                {{ item.errors }}
+                {{ item }}
+            </div>
+            {% endfor %}
             <button type="submit">انتشار</button>
         </form>
     </section>

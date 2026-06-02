@@ -20,7 +20,7 @@ class Blog(models.Model):
     blog_uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=70)
     body = models.TextField()
-    slug = models.SlugField()
+    slug = models.SlugField(allow_unicode=True)
     cover = models.ImageField(unique=True, upload_to=blog_cover_path, verbose_name="Blog Image")
     preview_body = models.CharField(max_length=403, editable=False)
     status = models.CharField(max_length=1, choices=BlogStatus, default=BlogStatus.PENDING)

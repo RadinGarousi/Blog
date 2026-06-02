@@ -1,5 +1,7 @@
+from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views import View
 
 from blog.forms import BlogCreateForm
@@ -23,9 +25,20 @@ class ExploreView(View):
         return render(request, "blog/explore.html")
 
 
-class BlogCreateView(View):
+class BlogCreateView(LoginRequiredMixin, View):
     form_class = BlogCreateForm
     template_name = "blog/create.html"
 
     def get(self, request):
         return render(request, self.template_name, {"form": self.form_class()})
+
+    def post(self, request):
+        form = self.form_class(request.POST, request.FILES)
+        if form.is_valid():
+            blog = form.save(commit=False)
+            blog.author = request.user
+            blog.save()
+            messages.success(request, "بلاگ شما با موفقیت ثبت شد و پس از تایید نمایش داده میشود.")
+            return redirect("blog:home")
+        return render(request, self.template_name, {"form": form})
+    

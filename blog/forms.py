@@ -8,7 +8,6 @@ class BlogCreateForm(forms.ModelForm):
     class Meta:
         model = Blog
         fields = ["title", "body", "cover"]
-        labels = {"title": "موضوع", "body": "متن", "cover": "تصویر"}
         widgets = {
             "title": forms.TextInput(attrs={"placeholder": "عنوان بلاگ", "autocomplete": "off"}),
             "body": forms.Textarea(attrs={"placeholder": "متن بلاگ"})
