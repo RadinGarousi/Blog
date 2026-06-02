@@ -14,7 +14,7 @@ class HomeView(View):
             )
         paginator = Paginator(blogs, 10)
         page_obj = paginator.get_page(request.GET.get("page"))
-        return render(request, "blog/home.html", {"blogs": page_obj})
+        return render(request, "blog/home.html", {"page_obj": page_obj})
 
 
 class ExploreView(View):

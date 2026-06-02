@@ -38,6 +38,6 @@ class Blog(models.Model):
         body_sliced = " . ".join(item for item in self.body[:300].splitlines() if item)
         self.preview_body = body_sliced + "..." if len(self.body) > 300 else body_sliced
         if self.pk is None and not self.slug:
-            self.slug = slugify(self.title, allow_unicode=True)
+            self.slug = slugify(self.title[:50], allow_unicode=True)
         super().save(*args, **kwargs)
 

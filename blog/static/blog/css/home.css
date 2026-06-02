@@ -6,7 +6,7 @@
 
 .posts {
     width: 100%;
-    padding: 80px 8%;
+    padding: 30px 8%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
@@ -79,6 +79,10 @@
 
     .hero h2 {
         font-size: 16px;
+    }
+
+    .posts {
+        padding: 30px 5%;
     }
 
     .post-content {

@@ -9,6 +9,7 @@
     {{ block.super }}
     <link rel="stylesheet" href="{% static 'blog/css/components.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pagination.css' %}">
 {% endblock %}
 
 
@@ -19,23 +20,26 @@
         <h1>GoldBlog</h1>
         <p> GoldBlog شبکه اجتماعی</p>
     </section>
-
-    <section class="posts">
-        {% if blogs %}
-            <div id="postsContainer">
-                {% for blog in blogs %}
-                    <div class="post-card">
-                        <img src="media/{{ blog.cover }}" alt="blog picture">
-                        <div class="post-content">
-                            <h2>{{ blog.title }}</h2>
-                            <p class="preview-text">{{ blog.preview_body }}</p>
-                            <span>نویسنده : <a href="{{ blog.author.get_absolute_url }}">{{ blog.author.username }}</a></span>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        <script src="{% static 'blog/js/home.js' %}"></script>
+    {% if page_obj %}
+        {% if page_obj.paginator.num_pages != 1 %}
+            <p class="pagination__status">شما در صفحه {{ page_obj.number }} از {{ page_obj.paginator.num_pages }} هستید</p>
         {% endif %}
-    </section>
+        <section class="posts">
+                <div id="postsContainer">
+                    {% for blog in page_obj %}
+                        <div class="post-card">
+                            <img src="media/{{ blog.cover }}" alt="blog picture">
+                            <div class="post-content">
+                                <h2>{{ blog.title }}</h2>
+                                <p class="preview-text">{{ blog.preview_body }}</p>
+                                <span>نویسنده : <a href="{{ blog.author.get_absolute_url }}">{{ blog.author.username }}</a></span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            <script src="{% static 'blog/js/home.js' %}"></script>
+        </section>
+        {% include "include/pagination.html" %}
+    {% endif %}
 
 {% endblock %}
