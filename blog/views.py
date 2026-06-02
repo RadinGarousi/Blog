@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views import View
 
 from blog.forms import BlogCreateForm
@@ -13,7 +13,7 @@ class HomeView(View):
         blogs = (
             Blog.objects.filter(status=Blog.BlogStatus.VERIFIED)
             .select_related("author")
-            .only("cover", "title", "preview_body", "slug", "author__username")
+            .only("cover", "title", "preview_body", "slug", "author__username", "author__pk")
             )
         paginator = Paginator(blogs, 10)
         page_obj = paginator.get_page(request.GET.get("page"))
@@ -42,3 +42,9 @@ class BlogCreateView(LoginRequiredMixin, View):
             return redirect("blog:home")
         return render(request, self.template_name, {"form": form})
     
+
+class BlogDetailView(View):
+    def get(self, request, blog_id, blog_slug):
+        only_fields = ["title", "body", "cover", "created_at", "author__pk", "author__username"]
+        blog = get_object_or_404(Blog.objects.select_related("author").only(*only_fields), pk=blog_id, slug=blog_slug)
+        return render(request, "blog/detail.html", {"blog": blog})
