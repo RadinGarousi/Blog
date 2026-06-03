@@ -46,5 +46,11 @@ class BlogCreateView(LoginRequiredMixin, View):
 class BlogDetailView(View):
     def get(self, request, blog_id, blog_slug):
         only_fields = ["title", "body", "cover", "created_at", "author__pk", "author__username"]
-        blog = get_object_or_404(Blog.objects.select_related("author").only(*only_fields), pk=blog_id, slug=blog_slug)
+        if request.user.is_superuser:
+            only_fields.append("status")
+        blog = get_object_or_404(
+            Blog.objects.select_related("author").only(*only_fields),
+            pk=blog_id,
+            slug=blog_slug
+        )
         return render(request, "blog/detail.html", {"blog": blog})
