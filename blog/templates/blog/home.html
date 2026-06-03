@@ -28,11 +28,11 @@
                 <div id="postsContainer">
                     {% for blog in page_obj %}
                         <div class="post-card">
-                            <img src="media/{{ blog.cover }}" alt="blog picture">
+                            <img src="{{ blog.cover.url }}" alt="blog picture">
                             <div class="post-content">
-                                <h2>{{ blog.title }}</h2>
+                                <h2><a href="{{ blog.get_absolute_url }}" class="content__link">{{ blog.title }}</a></h2>
                                 <p class="preview-text">{{ blog.preview_body }}</p>
-                                <span>نویسنده : <a href="{{ blog.author.get_absolute_url }}">{{ blog.author.username }}</a></span>
+                                <span>نویسنده : <a href="{{ blog.author.get_absolute_url }}" class="content__author-link">{{ blog.author.username }}</a></span>
                             </div>
                         </div>
                     {% endfor %}

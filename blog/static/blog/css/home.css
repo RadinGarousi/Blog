@@ -40,9 +40,15 @@
     padding: 25px;
 }
 
-.post-content h2 {
+.post-content h2,
+.content__link {
     color: #d4af37;
     margin-bottom: 15px;
+    text-decoration: none;
+}
+
+.content__link:hover {
+    color: #886c0f;
 }
 
 .post-content p {
@@ -51,16 +57,17 @@
     margin-bottom: 20px;
 }
 
-.post-content span, a {
+.post-content span,
+.content__author-link {
     color: #808080;
     font-size: 16px;
 }
 
-.post-card a {
+.content__author-link {
     transition: all 0.25s linear;
 }
 
-.post-card a:hover {
+.content__author-link:hover {
     color: #c0c0c0;
     font-size: 20px;
 }

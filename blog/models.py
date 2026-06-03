@@ -1,8 +1,9 @@
 import uuid
 from pathlib import Path
 
-from django.db import models
 from django.contrib.auth import get_user_model
+from django.db import models
+from django.urls import reverse
 from django.utils.text import slugify
 
 User = get_user_model()
@@ -33,6 +34,9 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("blog:blog_detail", kwargs={"blog_id": self.pk, "blog_slug": self.slug})
 
     def save(self,*args, **kwargs):
         body_sliced = " . ".join(item for item in self.body[:300].splitlines() if item)

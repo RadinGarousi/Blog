@@ -13,7 +13,7 @@ class HomeView(View):
         blogs = (
             Blog.objects.filter(status=Blog.BlogStatus.VERIFIED)
             .select_related("author")
-            .only("cover", "title", "preview_body", "slug", "author__username", "author__pk")
+            .only("cover", "title", "preview_body", "slug", "author__username", "author__id")
             )
         paginator = Paginator(blogs, 10)
         page_obj = paginator.get_page(request.GET.get("page"))
@@ -45,7 +45,7 @@ class BlogCreateView(LoginRequiredMixin, View):
 
 class BlogDetailView(View):
     def get(self, request, blog_id, blog_slug):
-        only_fields = ["title", "body", "cover", "created_at", "author__pk", "author__username"]
+        only_fields = ["title", "body", "cover", "created_at", "author__id", "author__username"]
         if request.user.is_superuser:
             only_fields.append("status")
         blog = get_object_or_404(
