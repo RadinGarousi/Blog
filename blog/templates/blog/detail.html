@@ -1,3 +1,33 @@
 {% extends "base/main_base.html" %}
+{% load static %}
 
 {% block title %}GoldBlog{% endblock %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'blog/css/detail.css' %}">
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+    <div class="post-page">
+        <img src="media/{{ blog.cover }}" alt="Blog Image">
+        <div class="post-body">
+            <h1>{{ blog.title }}</h1>
+            <p>{{ blog.body }}</p>
+            <a href="{{ blog.author.get_absolute_url }}">{{ blog.author.username }}</a>
+            <div class="post__like-dislike">
+                <img src="{% static 'blog/icon/like.svg' %}" alt="Like Icon" class="post__like">
+                <img src="{% static 'blog/icon/like.svg' %}" alt="" class="post__dislike">
+            </div>
+            <div class="comments">
+                <h2>کامنت ها</h2>
+                <div class="comment-box">
+                    <input type="text" placeholder="نظر خود را وارد کنید">
+                    <a href="#" class="comment__submit">ارسال</a>
+                    <div class="commentList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
