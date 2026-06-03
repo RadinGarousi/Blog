@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from blog.models import Blog
+from blog.models import Blog, BlogVote
 
 
 @admin.register(Blog)
@@ -9,3 +9,14 @@ class BlogAdmin(admin.ModelAdmin):
     raw_id_fields = ["author"]
     empty_value_display = "This field is readonly . After save blog you can see data"
     prepopulated_fields = {"slug": ["title"]}
+    list_display = ["title", "author", "status", "created_at", "updated_at"]
+    list_filter = ["author", "status", "created_at", "updated_at"]
+
+
+@admin.register(BlogVote)
+class BlogVoteAdmin(admin.ModelAdmin):
+    readonly_fields = ["created_at", "updated_at"]
+    empty_value_display = "This field is readonly . After save blog you can see data"
+    raw_id_fields = ["author", "blog"]
+    list_display = ["status", "blog", "author", "created_at", "updated_at"]
+    list_filter = ["author", "blog", "status", "created_at", "updated_at"]
