@@ -51,7 +51,7 @@ class BlogVote(models.Model):
         LIKE = "L", "Like"
         DISLIKE = "D", "Dislike"
 
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="votes", verbose_name="User")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="votes")
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name="votes")
     type = models.CharField(max_length=1, choices=VoteType)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -62,3 +62,23 @@ class BlogVote(models.Model):
 
     def __str__(self):
         return f"{self.author} **{self.type}** {self.blog}"
+
+class BlogComment(models.Model):
+    class CommentStatus(models.TextChoices):
+        VERIFIED = "V", "Verified"
+        PENDING = "P", "Pending"
+        REJECTED = "R", "Rejected"
+
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments")
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name="comments")
+    body = models.CharField(verbose_name="Content", max_length=1000)
+    parent = models.ForeignKey("self", on_delete=models.CASCADE, related_name="replies", blank=True, null=True)
+    status = models.CharField(max_length=1, default=CommentStatus.PENDING, choices=CommentStatus)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"{self.author} ==> {self.blog}"
