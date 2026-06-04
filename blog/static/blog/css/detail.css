@@ -46,22 +46,25 @@
   color: #a3a1a1;
 }
 
-.post__like-dislike {
+.post-vote {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.post__like {
-  width: 50px;
-  height: 50px;
+.vote__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.post__like--active {
-  fill: #fff;
+.vote__btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
-.post__like:last-child {
+.vote__dislike {
   transform: rotate(180deg);
 }
 

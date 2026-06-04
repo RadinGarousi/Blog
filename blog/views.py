@@ -56,7 +56,7 @@ class BlogDetailView(View):
         )
         # under code for like system
         context = {
-            "likes_count": blog.votes.filter(type=BlogVote.VoteType.LIKE).count(),
+            "like_count": blog.votes.filter(type=BlogVote.VoteType.LIKE).count(),
             "dislike_count": blog.votes.filter(type=BlogVote.VoteType.DISLIKE).count(),
             "blog": blog
         }
