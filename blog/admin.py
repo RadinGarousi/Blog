@@ -18,5 +18,5 @@ class BlogVoteAdmin(admin.ModelAdmin):
     readonly_fields = ["created_at", "updated_at"]
     empty_value_display = "This field is readonly . After save blog you can see data"
     raw_id_fields = ["author", "blog"]
-    list_display = ["status", "blog", "author", "created_at", "updated_at"]
-    list_filter = ["author", "blog", "status", "created_at", "updated_at"]
+    list_display = ["type", "blog", "author", "created_at", "updated_at"]
+    list_filter = ["author", "blog", "type", "created_at", "updated_at"]

@@ -19,3 +19,5 @@ class CustomUserAdmin(UserAdmin):
         ("profile", {"fields": ("bio", "is_private", "account_status", "country", "city", "avatar", "poster")})]
 
     add_fieldsets = [(None, {"fields": ("username", "email", "password1", "password2")})]
+    list_display = ["username", "email", "first_name", "last_name", "account_status"]
+    list_filter = ["account_status"]

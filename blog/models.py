@@ -47,13 +47,13 @@ class Blog(models.Model):
 
 
 class BlogVote(models.Model):
-    class VoteStatus(models.TextChoices):
+    class VoteType(models.TextChoices):
         LIKE = "L", "Like"
         DISLIKE = "D", "Dislike"
 
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="votes", verbose_name="User")
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name="votes")
-    status = models.CharField(max_length=1, choices=VoteStatus)
+    type = models.CharField(max_length=1, choices=VoteType)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -61,4 +61,4 @@ class BlogVote(models.Model):
         ordering = ["-updated_at"]
 
     def __str__(self):
-        return f"{self.author} **{self.status}** {self.blog}"
+        return f"{self.author} **{self.type}** {self.blog}"
