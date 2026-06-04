@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views import View
 
 from blog.forms import BlogCreateForm, CommentCreateForm
-from blog.models import Blog, BlogVote
+from blog.models import Blog, BlogComment, BlogVote
 
 
 # Simple blog system
@@ -57,6 +57,7 @@ class BlogDetailView(View):
         context = {
             "like_count": blog.votes.filter(type=BlogVote.VoteType.LIKE).count(),
             "dislike_count": blog.votes.filter(type=BlogVote.VoteType.DISLIKE).count(),
+            "comments": blog.comments.filter(status=BlogComment.CommentStatus.VERIFIED).select_related("author"),
             "blog": blog,
             "form": CommentCreateForm()
         }

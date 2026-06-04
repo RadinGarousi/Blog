@@ -116,6 +116,15 @@
   margin-bottom: 10px;
 }
 
+.comment b {
+  color: #d4af37
+}
+
+.comment p {
+  color: #ccc;
+  line-height: 0.2;
+}
+
 .comment small {
   color: #888;
   display: block;

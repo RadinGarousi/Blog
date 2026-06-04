@@ -63,7 +63,17 @@
                     {% endfor %}
                     <button type="submit" class="comment__submit">ارسال</button>
                 </form>
-                <div class="commentList"></div>
+                {% if comments %}
+                    <div class="commentList">
+                        {% for comment in comments %}
+                            <div class="comment">
+                                <b>{{ comment.author.username }}</b>
+                                <p>{{ comment.body|linebreaks }}</p>
+                                <small>{{ comment.created_at|timesince }}</small>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
