@@ -54,17 +54,14 @@ class BlogDetailView(View):
             pk=blog_id,
             slug=blog_slug
         )
-        # under code for like system
         context = {
             "like_count": blog.votes.filter(type=BlogVote.VoteType.LIKE).count(),
             "dislike_count": blog.votes.filter(type=BlogVote.VoteType.DISLIKE).count(),
-            "blog": blog
+            "blog": blog,
+            "form": CommentCreateForm()
         }
         if request.user.is_authenticated:
             context["user_vote"] = BlogVote.objects.filter(author=request.user, blog=blog).first()
-        # under code for comment system
-        context["form"] = CommentCreateForm()
-
         return render(request, "blog/detail.html", context)
 
 
@@ -91,3 +88,24 @@ class BlogLikeView(BlogVoteView):
 
 class BlogDislikeView(BlogVoteView):
     vote_type = BlogVote.VoteType.DISLIKE
+
+
+
+
+
+# Comment system
+class CommentCreateView(LoginRequiredMixin, View):
+    def post(self, request, blog_id):
+        blog = get_object_or_404(Blog.objects.only("slug"), pk=blog_id)
+        form = CommentCreateForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.blog = blog
+            comment.author = request.user
+            comment.save()
+            messages.success(request, "کامنت شما با موفقیت ثبت شد و پس از تایید نمایش داده خواهد شد")
+        else:
+            for errors in form.errors.values():
+                for error in errors:
+                    messages.warning(request, error)
+        return redirect(blog.get_absolute_url())

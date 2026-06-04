@@ -104,6 +104,11 @@
   text-decoration: none;
 }
 
+.comments h2 {
+  color: #d4af37;
+  margin-bottom: 15px;
+}
+
 .comment {
   background: #111;
   padding: 12px;
