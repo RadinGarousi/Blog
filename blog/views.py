@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views import View
 
-from blog.forms import BlogCreateForm
+from blog.forms import BlogCreateForm, CommentCreateForm
 from blog.models import Blog, BlogVote
 
 
@@ -62,6 +62,8 @@ class BlogDetailView(View):
         }
         if request.user.is_authenticated:
             context["user_vote"] = BlogVote.objects.filter(author=request.user, blog=blog).first()
+        # under code for comment system
+        context["form"] = CommentCreateForm()
 
         return render(request, "blog/detail.html", context)
 
@@ -76,7 +78,6 @@ class BlogVoteView(LoginRequiredMixin, View):
         blog = get_object_or_404(Blog.objects.only("slug"), pk=blog_id, status=Blog.BlogStatus.VERIFIED)
         blog_vote = BlogVote.objects.filter(author=request.user, blog=blog).first()
         if blog_vote:
-            print(blog_vote)
             if blog_vote.type == self.vote_type:
                 blog_vote.delete()
             else:

@@ -78,15 +78,19 @@
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
+  width: 100%;
+  flex-direction: column;
 }
 
-.comment-box input {
-  flex: 1;
+.comment-box textarea {
   padding: 12px;
   border-radius: 10px;
   border: none;
   background: #111;
   color: white;
+  font-family: inherit;
+  font-size: 15px;
+  height: 60px;
 }
 
 .comment__submit {

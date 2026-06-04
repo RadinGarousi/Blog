@@ -56,8 +56,13 @@
         <div class="comments">
             <h2>کامنت ها</h2>
             <div class="comment-box">
-                <input type="text" placeholder="نظر خود را وارد کنید">
-                <a href="#" class="comment__submit">ارسال</a>
+                <form action="{% url 'blog:comment_create' blog.pk %}" method="post" class="comment-box" novalidate>
+                    {% csrf_token %}
+                    {% for item in form %}
+                        {{item}}
+                    {% endfor %}
+                    <button type="submit" class="comment__submit">ارسال</button>
+                </form>
                 <div class="commentList"></div>
             </div>
         </div>
